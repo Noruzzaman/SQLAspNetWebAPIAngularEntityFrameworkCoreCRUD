@@ -1,0 +1,48 @@
+
+  <div >
+    <div class="box" style="margin-top: 30px;">
+      <a class="button"  href="#popup1">New Employee</a>
+     
+    </div>
+    <div id="popup1" class="overlay">
+      <div class="popup">
+        <h3>Employee</h3>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+          <div class="container">
+            <app-employee-form></app-employee-form>
+            </div>
+          
+        </div>
+      </div>
+  </div>
+  <table class="table table-hover" style="margin-top: 30px;">
+      <thead   style="background-color:#bbdeee;">
+       <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Date of Join</th>
+        <th>Designation</th>
+        <th>Age</th>
+        <th>Actions</th>
+       </tr>
+      </thead>
+      <tbody style="background-color:rgb(233, 231, 231) ;">
+        <tr *ngFor="let emp of empService.listEmployee"> 
+          <td>{{emp.name}}</td>
+          <td>{{emp.lastName}}</td>
+          <td>{{emp.email}}</td>
+          <td>{{emp.doj | date:'yyyy-MM-dd' }}</td>
+          <td>{{emp.designation}}</td>
+          <td>{{emp.age}}</td>
+          <td>
+
+            <button type="button" href="#" (click)="populateEmployee(emp)"><a style="direction: none; color: black;"  href="#popup1">Edit</a></button>&nbsp;|&nbsp;
+
+            <button type="button" href="#" (click)="delete(emp.id)">Delete</button>
+           
+          </td>
+        </tr>
+      </tbody>
+  </table>
